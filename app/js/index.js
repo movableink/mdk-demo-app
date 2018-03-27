@@ -1,0 +1,25 @@
+import CD from "cropduster";
+import jQuery from "jquery";
+import StudioApp from "studio-app";
+
+class MyWeather extends StudioApp {
+  constructor() {
+    super();
+  }
+
+  render() {
+    // Rendering code goes here
+
+    const bgColor = this.options.backgroundColor || "white";
+    document.body.style.background = bgColor;
+
+    const name = this.param("name", { defaultValue: "world" });
+
+    this.replaceTokens(this.tags, { name });
+    this.autoresizeTags();
+    this.waitForImageAssets();
+    window.APP_SUCCESSFULLY_RENDERED = true;
+  }
+}
+
+export default MyWeather;
