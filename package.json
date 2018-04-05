@@ -18,6 +18,7 @@
   "dependencies": {
     "cropduster": "^6.0.0",
     "jquery": "^3.2.1",
+    "skycons": "^1.0.0",
     "studio-app": "^1.5.0"
   },
   "devDependencies": {

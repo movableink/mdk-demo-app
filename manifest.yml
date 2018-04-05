@@ -1,7 +1,5 @@
 ---
-
-# Title of the app, to be displayed in the App Gallery.
-name: my-weather
+name: My Weather
 
 # List of people who have worked on this cartridge, not displayed anywhere else
 authors:
@@ -29,10 +27,8 @@ category: 'data: rendering'
 
 # A reference to the icon to show in the App Gallery.
 icon_v2: tools
-
-# Default dimensions of the app in the Studio workspace.
-width: 450
-height: 150
+width: 300
+height: 200
 
 # Show advanced options tab in the dashboard
 expose_advanced_options: true
@@ -41,42 +37,58 @@ expose_advanced_options: true
 # crop page. [brackets] denote values that will be replaced with query
 # parameters from the embed page.
 query_params:
-  name: '[name]'
+  city: '[mi:city]'
+  lat: '[mi:lat]'
+  lon: '[mi:lon]'
 
 # A list of configuration options to be displayed in the sidebar in
 # Studio. The user will be able to configure these options, and the
 # results will be injected into your app's HTML under the `MI.options`
 # variable.
 fields:
-  - name: backgroundColor
-    label: Background Color
-    type: select
-    value: white
+  - name: apiKey
+    label: API Key
+    type: hidden
+    value: 86cbdc12c4679a3f81bd0f1acceb18da
+  - name: forecastApi
+    label: Forecast API
+    type: data-source
+    placeholder: ''
+    template: darksky_forecast
+  - name: iconColor
+    label: Icon Color
+    type: color
     description: ''
-    options:
-      - label: White
-        value: white
-      - label: Red
-        value: red
-      - label: Blue
-        value: blue
-      - label: Green
-        value: green
-
+    value: '#FFFFFF'
 studio_options:
-  # You can specify extra tools in the Studio toolbar. Tools have a name
-  # and a base `type` attribute. (text, image, etc) You will be able to
-  # reference a tool from your javascript code based on its class name.
   tools:
-    - name: A tool
-      icon: text-vector
+    - name: city
+      label: City
       type: text
-      locked: false
+      icon: maps
       defaults:
-        text: '[current_value]'
-        previewText: '100'
-      fields:
-        - name: resize
-          type: checkbox
-          label: Resize text with progress bar
-          value: true
+        text: '[city]'
+    - name: weatherIcon
+      label: Weather Icon
+      type: image
+      icon: tools
+      defaults:
+        text: ''
+    - name: temperature
+      label: Temperature
+      type: text
+      icon: weather-high-temp
+      defaults:
+        text: '[temperature]'
+data_source_definitions:
+  darksky_forecast:
+    url: 'https://api.darksky.net/forecast/[apiKey]/[lat],[lon]'
+    type: ApiDataSource
+    content_type: application/json
+    name: Weather Forecast
+    sample_responses:
+      - name: NYC
+        path: sample_data/nyc.json
+      - name: Anchorage
+        path: sample_data/anchorage.json
+    templateType: darksky_forecast
