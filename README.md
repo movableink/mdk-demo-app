@@ -4,7 +4,7 @@ This is Movable Ink app that goes with the Studio content builder.
 
 This is the app that is built in this video:
 
-[![Building an MDK App](https://img.youtube.com/vi/mooDZ_frGeo/0.jpg)](https://www.youtube.com/watch?v=mooDZ_frGeo)
+[![Building an MDK App](https://user-images.githubusercontent.com/3705/38388871-8afa6800-38ea-11e8-9c01-19be3e76651f.png)](https://www.youtube.com/watch?v=mooDZ_frGeo)
 
 ## Prerequisites
 
