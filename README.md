@@ -1,5 +1,6 @@
 # my-weather
 
+
 This is Movable Ink app that goes with the Studio content builder.
 
 This is the app that is built in this video:
