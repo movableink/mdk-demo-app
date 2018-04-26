@@ -91,4 +91,3 @@ data_source_definitions:
         path: sample_data/nyc.json
       - name: Anchorage
         path: sample_data/anchorage.json
-    template_type: darksky_forecast
